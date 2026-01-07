@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Shield Checker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script src="main.js" defer></script>
+  </head>
+  <body class="bg-black/90 flex items-center justify-center min-h-screen p-4">
+    <div
+      class="bg-white p-8 rounded-2xl shadow-xl w-full max-width max-w-md border border-slate-100"
+    >
+      <div class="text-center mb-6">
+        <h2 class="text-2xl font-bold text-slate-800">Password Shield</h2>
+        <p class="text-slate-500 text-sm">
+          Real-time security & leak detection
+        </p>
+      </div>
+
+      <div class="flex justify-between items-end mb-2">
+        <span
+          id="strength-text"
+          class="text-sm font-bold text-slate-400 uppercase tracking-wider"
+          >Enter Password</span
+        >
+        <span
+          id="entropy-bits"
+          class="text-xs font-mono text-slate-400 bg-slate-100 px-2 py-1 rounded"
+          >0 bits</span
+        >
+      </div>
+
+      <div class="relative group">
+        <input
+          type="password"
+          id="pw-input"
+          class="w-full p-4 pr-24 bg-slate-50 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:ring-0 transition-all outline-none text-lg"
+          placeholder="••••••••••••"
+        />
+
+        <div class="absolute right-2 top-1/2 -translate-y-1/2 flex gap-1">
+          <button
+            id="copy-btn"
+            class="p-2 text-slate-400 hover:text-blue-500 transition-colors"
+            title="Copy"
+          >
+            <i class="fa-regular fa-copy"></i>
+          </button>
+          <button
+            id="toggle-view"
+            class="p-2 text-slate-400 hover:text-blue-500 font-bold text-xs w-12"
+          >
+            <i class="fa-regular fa-eye"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="h-2 w-full bg-slate-100 rounded-full mt-4 overflow-hidden">
+        <div
+          id="strength-bar"
+          class="h-full w-0 transition-all duration-500 ease-out bg-slate-300"
+        ></div>
+      </div>
+
+      <div
+        id="breach-status"
+        class="mt-6 p-4 rounded-xl border-l-4 border-slate-200 bg-slate-100 text-sm text-slate-600 transition-all"
+      >
+        <i class="fa-solid fa-shield-halved mr-2"></i> Database check: Idle
+      </div>
+
+      <button
+        id="gen-pw"
+        class="w-full mt-6 bg-slate-800 hover:bg-slate-900 text-white font-bold py-4 rounded-xl transition-transform active:scale-95 flex items-center justify-center gap-2"
+      >
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        Generate Strong Password
+      </button>
+
+      <p
+        class="text-xs text-center text-slate-400 mt-6 uppercase tracking-widest font-semibold"
+      >
+        SECURED BY SHA-1 K-ANONYMITY
+      </p>
+      <p class="text-xs text-slate-400 text-center mt-2">
+        &copy;Bratva (Kareem Toheeb) 2026
+      </p>
+    </div>
+  </body>
+</html>
