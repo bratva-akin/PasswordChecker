@@ -1,43 +1,31 @@
 # 🛡️ Shield Checker: Advanced Password Security Tool
 
-Shield Checker is a modern, client-side password strength evaluator and breach detector. It is designed to provide users with immediate, actionable feedback on their password security without compromising privacy.
+A professional-grade, client-side password strength evaluator that focuses on mathematical entropy and real-world breach data.
 
 ## ✨ Features
 
-* *Real-time Strength Meter:* Visual feedback based on complexity and length.
-* *Shannon Entropy Calculation:* Measures the mathematical randomness (bits) of the password.
-* *Leak Detection:* Integrated with the *Have I Been Pwned (HIBP)* API.
-* *Privacy-First (k-Anonymity):* Passwords are hashed locally using SHA-1. Only the first 5 characters of the hash are sent to the API, ensuring your raw password is never exposed to the internet.
-* *Secure Generator:* Uses a Cryptographically Secure Pseudorandom Number Generator (CSPRNG) to create 16-character high-entropy passwords.
-* *Modern UI:* Built with *Tailwind CSS* for a clean, responsive, and accessible experience.
-* *Copy-to-Clipboard:* Quickly copy generated passwords with one click.
-
-## 🚀 Technologies Used
-
-- *HTML5/JavaScript (ES6+)*
-- *Tailwind CSS* (via CDN)
-- *Web Crypto API* (for SHA-1 hashing and CSPRNG)
-- *HIBP Pwned Passwords API*
-
-## 🛠️ How it Works
-
-1. *Local Analysis:* As the user types, the script checks for uppercase, lowercase, numbers, and special characters.
-2. *Entropy Calculation:* The tool calculates entropy using the formula:
-   $E = L \times \log_2(R)$
-   (Where L is password length and R is the size of the character pool).
-3. *Breach Check:* - The password is converted to a *SHA-1 hash*.
-   - The script sends the *first 5 characters* (prefix) of the hash to api.pwnedpasswords.com.
-   - The API returns a list of matching hash suffixes.
-   - The browser checks the list locally to see if a match exists.
+* **Rule-Based Scoring:** Checks for length (8/12 chars), casing, numbers, and symbols.
+* **Mathematical Entropy:** Displays "bits of security" based on character pool randomness.
+* **HIBP Integration:** Real-time checking against billions of leaked passwords using the HIBP Range API.
+* **Privacy-First:** Uses **SHA-1 k-Anonymity**. Your password is never sent to a server; only the first 5 characters of its hash are used for comparison.
+* **Secure Generator:** Creates 16-character passwords using `window.crypto` (CSPRNG).
+* **User Experience:** Includes a "Show/Hide" icon toggle and "Copy to Clipboard" functionality.
 
 
 
-## 📦 Installation
+## 🚀 Tech Stack
 
-No installation required! 
+- **Framework:** Tailwind CSS (via Play CDN)
+- **Icons:** FontAwesome 6.0
+- **Hashing:** Web Crypto API (SHA-1)
+- **Deployment:** Single-file HTML/JS (zero dependencies)
 
-1. Copy the code into a file named index.html.
-2. Open the file in any modern web browser (Chrome, Firefox, Safari, Edge).
+## 🛠️ Logic Workflow
 
-## 🔒 Security Note
-This tool is intended for educational and personal use. While it uses industry-standard k-Anonymity, always ensure you are using a trusted device when handling sensitive passwords.
+1.  **Input Event:** Triggers immediate local strength bar updates.
+2.  **Debounce:** Waits 800ms after typing stops to prevent API rate-limiting.
+3.  **Local Hash:** Generates a SHA-1 hex string in the browser.
+4.  **Range Query:** Sends prefix to HIBP; browser performs the final match on the returned suffix list.
+
+## 📝 License
+MIT - Feel free to use this for your own projects!
