@@ -9,7 +9,7 @@ const copyBtn = document.getElementById("copy-btn");
 
 let debounceTimer;
 
-// --- SHOW/HIDE ---
+// --- SHOW/HIDE ICON ---
 toggleBtn.addEventListener("click", () => {
   const isPass = input.type === "password";
   input.type = isPass ? "text" : "password";
@@ -88,12 +88,12 @@ function updateUI(pw) {
   const width = (score / 5) * 100;
   bar.style.width = width + "%";
 
-  if (score <= 3) {
+  if (score <= 2) {
     bar.className = "h-full transition-all duration-500 bg-red-500";
     strengthText.innerText = "Weak";
     strengthText.className =
       "text-sm font-bold text-red-500 uppercase tracking-wider";
-  } else if (score <= 5) {
+  } else if (score <= 3) {
     bar.className = "h-full transition-all duration-500 bg-amber-400";
     strengthText.innerText = "Moderate";
     strengthText.className =
